@@ -1,0 +1,127 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'java'
+}
+
+// Set project version using a property, defaulting to 'unspecified' if not found
+version = project.properties[project.name + '.version'] ?: 'undefined'
+group = 'io.github.mcengine'
+
+ext {
+    // User
+    git_user_name = System.getenv('GIT_USER_NAME') ?: ''
+    git_user_token = System.getenv('GIT_USER_TOKEN') ?: ''
+
+    // Organization
+    git_organization_name = System.getenv('GIT_ORGANIZATION_NAME') ?: 'MCEngine'
+    git_organization_token = System.getenv('GIT_ORGANIZATION_TOKEN') ?: ''
+
+    // Repository
+    git_repository_name = System.getenv('GIT_REPOSITORY_NAME') ?: 'artificialintelligence'
+    git_repository_token = System.getenv('GIT_REPOSITORY_TOKEN') ?: ''
+
+    /* Project Information */
+    jarName = System.getenv('PROJECT_NAME') ?: 'MCEngineArtificialIntelligence'
+}
+
+allprojects {
+    group = 'io.github.mcengine'
+
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+
+        maven {
+            url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots'
+            content {
+                includeGroup 'org.bukkit'
+                includeGroup 'org.spigotmc'
+            }
+        }
+
+        maven {
+            name = "papermc"
+            url = 'https://repo.papermc.io/repository/maven-public/'
+        }
+
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'https://oss.sonatype.org/content/repositories/central' }
+
+        maven {
+            url = uri('https://maven.pkg.github.com/MCEngine/mcengine')
+            credentials {
+                username = project.git_user_name ?: 'null'
+                password = project.git_user_token ?: project.git_repository_token ?: project.git_organization_token ?: 'null'
+            }
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    def versionPropertyKey = project.path.replace(':', '-')
+    if (versionPropertyKey.startsWith('-')) {
+        versionPropertyKey = versionPropertyKey.substring(1)
+    }
+
+    if (!versionPropertyKey.contains('-')) {
+        versionPropertyKey = project.name
+    }
+
+    versionPropertyKey += '.version'
+    version = project.properties[versionPropertyKey] ?: 'undefined'
+
+    tasks.named('jar').configure {
+        enabled = false
+    }
+
+    tasks.named('shadowJar').configure {
+        archiveClassifier = null
+    }
+
+    afterEvaluate {
+        def serverPlatforms = ['spigotmc', 'papermc']
+        serverPlatforms.each { platform ->
+            if (project.path == ":server:${platform}:engine") {
+                def platformDir = rootProject.file("server/${platform}")
+                if (platformDir.exists()) {
+                    dependencies {
+                        // Add :common with 'shadow' configuration if it exists
+                        def commonProject = project.findProject(":common")
+                        if (commonProject != null) {
+                            implementation project(path: ":common", configuration: "shadow")
+                        }
+
+                        // Add versioned platform projects with 'shadow' configuration
+                        platformDir.eachDir { versionDir ->
+                            if (versionDir.name != 'engine') {
+                                def versionPath = ":server:${platform}:${versionDir.name}"
+                                def versionProject = project.findProject(versionPath)
+                                if (versionProject != null) {
+                                    implementation project(path: versionPath, configuration: "shadow")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+shadowJar {
+    version = version
+    archiveClassifier = null
+    archiveBaseName = project.jarName
+}
+
+tasks.named('jar').configure {
+    enabled = false
+}
+
+build.dependsOn(shadowJar)

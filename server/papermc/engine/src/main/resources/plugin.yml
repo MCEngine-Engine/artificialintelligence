@@ -1,0 +1,11 @@
+name: MCEngineArtificialIntelligence
+version: ${version}
+main: io.github.mcengine.papermc.artificialintelligence.engine.MCEngineArtificialIntelligencePaperMC
+author: MCEngine
+description: MCEngine ArtificialIntelligence
+api-version: 1.13
+commands:
+  ai:
+    description: Set your AI token
+    usage: /ai <platform> token set <token>
+    permission-message: You do not have permission to use this command.
