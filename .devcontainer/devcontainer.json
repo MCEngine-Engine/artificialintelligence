@@ -1,25 +1,32 @@
 {
-    "name": "Java Gradle",
-    "build": {
-        "dockerfile": "Dockerfile"
+  "name": "Java Gradle",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": "false",
+      "installGradle": "true"
     },
-    "features": {
-        "ghcr.io/devcontainers/features/java:1": {
-        "version": "none",
-        "installMaven": "false",
-        "installGradle": "true"
-        },
-        "ghcr.io/devcontainers-contrib/features/ant-sdkman:2": {}
-    },
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "workbench.colorTheme": "Default Dark Modern"
-            },
-            "extensions": [
-                "ms-azuretools.vscode-docker",
-                "MCEngine.mcengine-vscode-extension-pack"
-            ]
-        }
+    "ghcr.io/devcontainers-contrib/features/ant-sdkman:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.colorTheme": "Default Dark Modern"
+      },
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "MCEngine.mcengine-vscode-extension-pack"
+      ]
     }
+  },
+  "postCreateCommand": "git config --global user.name \"$GIT_USER_NAME\" && git config --global user.email \"$GIT_USER_EMAIL\"",
+  "remoteEnv": {
+    "GIT_USER_NAME": "${localEnv:GIT_USER_NAME}",
+    "GIT_USER_EMAIL": "${localEnv:GIT_USER_EMAIL}",
+    "GIT_USER_TOKEN": "${localEnv:GIT_USER_TOKEN}"
+  },
+  "workspaceFolder": "/workspace"
 }
