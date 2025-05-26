@@ -2,11 +2,16 @@ plugins {
     id 'java-library'
 }
 
-dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.21.5-R0.1-SNAPSHOT'
+def mcengineApiVersion = findProperty('mcengine-api.version') ?: 'undefined'
+def mcengineArtificialIntelligenceApiVersion = findProperty('mcengine-artificialintelligence-api.version') ?: 'undefined'
 
-    compileOnly 'io.github.mcengine:mcengine-api:1.0.0-2-SNAPSHOT'
-    compileOnly 'io.github.mcengine:mcengine-artificialintelligence-api:1.0.0-3-SNAPSHOT'
+def spigotmcApiVersion = findProperty('spigotmc-api.version') ?: 'undefined'
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:$spigotmcApiVersion"
+
+    compileOnly "io.github.mcengine:mcengine-api:$mcengineApiVersion"
+    compileOnly "io.github.mcengine:mcengine-artificialintelligence-api:$mcengineArtificialIntelligenceApiVersion"
 }
 
 shadowJar {
