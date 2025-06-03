@@ -1,5 +1,6 @@
 package io.github.mcengine.spigotmc.artificialintelligence.engine;
 
+import io.github.mcengine.api.mcengine.MCEngineApi;
 import io.github.mcengine.api.artificialintelligence.MCEngineArtificialIntelligenceApi;
 import io.github.mcengine.api.artificialintelligence.util.MCEngineArtificialIntelligenceApiUtilToken;
 import io.github.mcengine.api.mcengine.Metrics;
@@ -56,8 +57,8 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
         getCommand("ai").setTabCompleter(new MCEngineArtificialIntelligenceCommonTabCompleter(this));
 
         // Load extensions
-        MCEngineApiUtilExtension.loadExtensions(this, "addons", "AddOn");
-        MCEngineApiUtilExtension.loadExtensions(this, "dlcs", "DLC");
+        MCEngineApi.loadExtensions(this, "addons", "AddOn");
+        MCEngineApi.loadExtensions(this, "dlcs", "DLC");
 
         // Load built-in models
         String[] platforms = { "deepseek", "openai", "openrouter" };
@@ -90,7 +91,7 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
             }
         }
 
-        api.checkUpdate("github", "MCEngine", "artificialintelligence-engine", getConfig().getString("github.token", "null"));
+        MCEngineApi.checkUpdate(this, "github", "MCEngine", "artificialintelligence-engine", getConfig().getString("github.token", "null"));
     }
 
     /**
