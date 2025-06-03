@@ -9,16 +9,18 @@ group = 'io.github.mcengine'
 
 ext {
     // User
-    git_user_name = System.getenv('GIT_USER_NAME') ?: ''
-    git_user_token = System.getenv('GIT_USER_TOKEN') ?: ''
+    user_git_name = System.getenv('USER_GIT_NAME') ?: ''
+
+    // GitHub
+    user_github_token = System.getenv('USER_GITHUB_TOKEN') ?: ''
 
     // Organization
-    git_organization_name = System.getenv('GIT_ORGANIZATION_NAME') ?: 'MCEngine'
-    git_organization_token = System.getenv('GIT_ORGANIZATION_TOKEN') ?: ''
+    organization_name = System.getenv('ORGANIZATION_NAME') ?: 'MCEngine'
+    organization_token = System.getenv('ORGANIZATION_TOKEN') ?: ''
 
     // Repository
-    git_repository_name = System.getenv('GIT_REPOSITORY_NAME') ?: 'artificialintelligence'
-    git_repository_token = System.getenv('GIT_REPOSITORY_TOKEN') ?: ''
+    repository_name = System.getenv('REPOSITORY_NAME') ?: 'artificialintelligence'
+    repository_token = System.getenv('REPOSITORY_TOKEN') ?: ''
 
     /* Project Information */
     jarName = System.getenv('PROJECT_NAME') ?: 'MCEngineArtificialIntelligence'
@@ -53,8 +55,8 @@ allprojects {
         maven {
             url = uri('https://maven.pkg.github.com/MCEngine/mcengine')
             credentials {
-                username = project.git_user_name ?: 'null'
-                password = project.git_user_token ?: project.git_repository_token ?: project.git_organization_token ?: 'null'
+                username = project.user_git_name
+                password = project.user_github_token ?: project.repository_token ?: project.organization_token
             }
         }
     }
