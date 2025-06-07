@@ -1,4 +1,4 @@
-[![YouTube Playlist](https://img.shields.io/badge/Youtube-Playlist-red)](https://www.youtube.com/playlist?list=PLAIvok8LGm7dNHHuRnTFfEVt17_4_gu9i)
+[![Spigot](https://raw.githubusercontent.com/intergrav/devins-badges/refs/heads/v3/assets/cozy/available/spigot_vector.svg)](https://www.spigotmc.org/resources/mcengine-artificialintelligence-engine.124931/)
 
 # ℹ️ Information
 
