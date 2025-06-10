@@ -23,7 +23,7 @@ ext {
     repository_token = System.getenv('REPOSITORY_TOKEN') ?: ''
 
     /* Project Information */
-    jarName = System.getenv('PROJECT_NAME') ?: 'MCEngineArtificialIntelligence'
+    jarName = System.getenv('PROJECT_NAME') ?: 'MCEngineAI'
 }
 
 allprojects {
