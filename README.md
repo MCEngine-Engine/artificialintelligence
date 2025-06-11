@@ -1,3 +1,4 @@
+[![Bstats](https://raw.githubusercontent.com/intergrav/devins-badges/refs/heads/v3/assets/cozy/available/bstats_vector.svg)](https://bstats.org/plugin/bukkit/MCEngineArtificialIntelligence/25556)
 [![Spigot](https://raw.githubusercontent.com/intergrav/devins-badges/refs/heads/v3/assets/cozy/available/spigot_vector.svg)](https://www.spigotmc.org/resources/mcengine-artificialintelligence-engine.124931/)
 
 # ℹ️ Information
