@@ -7,6 +7,12 @@ This repository is designed for use with the [`ArtificialIntelligence-API`](http
 
 ---
 
+⚠️ **Important Notice**  
+If you attempt to manually decrypt a player’s token, you may face **legal consequences**.  
+I, the owner and developer, will **not be responsible** for any misuse or attempts to reverse-engineer player tokens. 🔒🚫
+
+---
+
 <div align="center">
 
 🎯 **Explore AddOns and DLCs for Artificial Intelligence below:**
