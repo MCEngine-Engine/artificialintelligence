@@ -15,28 +15,11 @@ import java.util.Date;
 
 /**
  * Main SpigotMC plugin class for MCEngineArtificialIntelligence.
- * Handles plugin lifecycle, token validation, API initialization, and update checking.
  */
 public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
 
     /**
-     * Secret key used for token validation (may be configured).
-     */
-    private String secretKey;
-
-    /**
-     * Token used to verify license or authentication.
-     */
-    private String token;
-
-    /**
-     * Expiration date of the token (if applicable).
-     */
-    private Date expirationDate;
-
-    /**
      * Called when the plugin is enabled.
-     * Performs configuration loading, token validation, API initialization, and schedules token validation checks.
      */
     @Override
     public void onEnable() {
