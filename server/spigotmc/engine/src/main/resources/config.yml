@@ -1,12 +1,34 @@
 enable: false
 
 # Database support
-# - SQLite
+# - sqlite
+# - mysql
+# - postgresql
+# - mongodb
 database:
   type: sqlite
 
   sqlite:
     path: artificialintelligence.db
+
+  mysql:
+    host: localhost
+    port: "3306"
+    name: mcengine
+    user: root
+    password: ""
+
+  postgresql:
+    host: localhost
+    port: "5432"
+    name: mcengine
+    user: postgres
+    password: ""
+
+  mongodb:
+    uri: mongodb://localhost:27017
+    name: mcengine
+    collection: artificialintelligence
 
 token:
   # Used to encrypt player tokens before saving them to the database
