@@ -1,7 +1,7 @@
 package io.github.mcengine.common.artificialintelligence.command;
 
 import io.github.mcengine.api.artificialintelligence.MCEngineArtificialIntelligenceApi;
-import io.github.mcengine.api.artificialintelligence.database.IMCEngineArtificialIntelligenceApiDatabase;
+import io.github.mcengine.api.artificialintelligence.database.IMCEngineArtificialIntelligenceDB;
 import io.github.mcengine.api.mcengine.MCEngineApi;
 import io.github.mcengine.common.artificialintelligence.command.MCEngineArtificialIntelligenceCommonCommandUtil;
 import org.bukkit.command.Command;
@@ -31,7 +31,7 @@ public class MCEngineArtificialIntelligenceCommonCommand implements CommandExecu
     /**
      * Database instance used to persist and retrieve player tokens.
      */
-    private final IMCEngineArtificialIntelligenceApiDatabase db;
+    private final IMCEngineArtificialIntelligenceDB db;
 
     /**
      * Constructs the command executor using the provided API instance.
