@@ -40,8 +40,8 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
         getCommand("ai").setTabCompleter(new MCEngineArtificialIntelligenceCommonTabCompleter(this));
 
         // Load extensions
-        MCEngineApi.loadExtensions(this, "addons", "AddOn");
-        MCEngineApi.loadExtensions(this, "dlcs", "DLC");
+        MCEngineApi.loadExtensions(this, "IMCEngineArtificialIntelligenceAddOn", "addons", "AddOn");
+        MCEngineApi.loadExtensions(this ,"IMCEngineArtificialIntelligenceDLC", "dlcs", "DLC");
 
         // Load built-in models
         String[] platforms = { "deepseek", "openai", "openrouter" };
