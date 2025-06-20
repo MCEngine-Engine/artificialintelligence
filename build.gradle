@@ -93,12 +93,6 @@ subprojects {
                 def platformDir = rootProject.file("server/${platform}")
                 if (platformDir.exists()) {
                     dependencies {
-                        // Add :common with 'shadow' configuration if it exists
-                        def commonProject = project.findProject(":common")
-                        if (commonProject != null) {
-                            implementation project(path: ":common", configuration: "shadow")
-                        }
-
                         // Add versioned platform projects with 'shadow' configuration
                         platformDir.eachDir { versionDir ->
                             if (versionDir.name != 'engine') {
