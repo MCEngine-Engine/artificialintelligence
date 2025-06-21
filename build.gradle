@@ -53,7 +53,21 @@ allprojects {
         maven { url 'https://oss.sonatype.org/content/repositories/central' }
 
         maven {
-            url = uri('https://maven.pkg.github.com/MCEngine/mcengine-api')
+            url = uri('https://maven.pkg.github.com/MCEngine/core-api')
+            credentials {
+                username = project.user_git_name
+                password = project.user_github_token ?: project.repository_token ?: project.organization_token
+            }
+        }
+        maven {
+            url = uri('https://maven.pkg.github.com/MCEngine/artificialintelligence-api')
+            credentials {
+                username = project.user_git_name
+                password = project.user_github_token ?: project.repository_token ?: project.organization_token
+            }
+        }
+        maven {
+            url = uri('https://maven.pkg.github.com/MCEngine/artificialintelligence-common')
             credentials {
                 username = project.user_git_name
                 password = project.user_github_token ?: project.repository_token ?: project.organization_token
@@ -93,12 +107,6 @@ subprojects {
                 def platformDir = rootProject.file("server/${platform}")
                 if (platformDir.exists()) {
                     dependencies {
-                        // Add :common with 'shadow' configuration if it exists
-                        def commonProject = project.findProject(":common")
-                        if (commonProject != null) {
-                            implementation project(path: ":common", configuration: "shadow")
-                        }
-
                         // Add versioned platform projects with 'shadow' configuration
                         platformDir.eachDir { versionDir ->
                             if (versionDir.name != 'engine') {
