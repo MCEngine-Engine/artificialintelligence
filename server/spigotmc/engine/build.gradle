@@ -5,7 +5,7 @@ plugins {
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.21.6-R0.1-SNAPSHOT'
 
-    implementation 'io.github.mcengine:core-api:1.0.5-SNAPSHOT'
+    implementation 'io.github.mcengine:core-api:1.0.5-1-SNAPSHOT'
     implementation 'io.github.mcengine:artificialintelligence-api:1.0.3-RELEASE'
     implementation 'io.github.mcengine:artificialintelligence-common:1.0.1-RELEASE'
 }
