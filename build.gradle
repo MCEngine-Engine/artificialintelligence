@@ -19,7 +19,7 @@ ext {
     organization_token = System.getenv('ORGANIZATION_TOKEN')
 
     // Repository
-    repository_name = System.getenv('REPOSITORY_NAME') ?: 'artificialintelligence'
+    repository_name = System.getenv('REPOSITORY_NAME') ?: 'artificialintelligence-engine'
     repository_token = System.getenv('REPOSITORY_TOKEN')
 
     /* Project Information */
