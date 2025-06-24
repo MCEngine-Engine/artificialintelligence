@@ -1,7 +1,7 @@
 package io.github.mcengine.papermc.artificialintelligence.engine;
 
 import io.github.mcengine.api.mcengine.MCEngineApi;
-import io.github.mcengine.api.artificialintelligence.MCEngineArtificialIntelligenceApi;
+import io.github.mcengine.common.artificialintelligence.MCEngineArtificialIntelligenceCommon;
 import io.github.mcengine.api.artificialintelligence.util.MCEngineArtificialIntelligenceApiUtilToken;
 import io.github.mcengine.api.mcengine.Metrics;
 import io.github.mcengine.api.mcengine.util.MCEngineApiUtilExtension;
@@ -34,9 +34,9 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
         }
 
         MCEngineArtificialIntelligenceApiUtilToken.initialize(this);
-        MCEngineArtificialIntelligenceApi api = new MCEngineArtificialIntelligenceApi(this);
+        MCEngineArtificialIntelligenceCommon api = new MCEngineArtificialIntelligenceCommon(this);
 
-        getCommand("ai").setExecutor(new MCEngineArtificialIntelligenceCommonCommand(api));
+        getCommand("ai").setExecutor(new MCEngineArtificialIntelligenceCommonCommand(api, api.getDB()));
         getCommand("ai").setTabCompleter(new MCEngineArtificialIntelligenceCommonTabCompleter(this));
 
         // Load extensions

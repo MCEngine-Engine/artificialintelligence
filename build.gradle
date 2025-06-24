@@ -4,7 +4,7 @@ plugins {
 }
 
 // Set project version using a property, defaulting to 'unspecified' if not found
-version = project.properties[project.name + '.version'] ?: 'undefined'
+version = project.properties[project.name + '.version']
 group = 'io.github.mcengine'
 
 ext {
@@ -19,7 +19,7 @@ ext {
     organization_token = System.getenv('ORGANIZATION_TOKEN')
 
     // Repository
-    repository_name = System.getenv('REPOSITORY_NAME') ?: 'artificialintelligence'
+    repository_name = System.getenv('REPOSITORY_NAME') ?: 'artificialintelligence-engine'
     repository_token = System.getenv('REPOSITORY_TOKEN')
 
     /* Project Information */
@@ -52,27 +52,20 @@ allprojects {
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         maven { url 'https://oss.sonatype.org/content/repositories/central' }
 
-        maven {
-            url = uri('https://maven.pkg.github.com/MCEngine/core-api')
-            credentials {
-                username = project.user_git_name
-                password = project.user_github_token ?: project.repository_token ?: project.organization_token
+        ext.configureGitHubRepo = { repoName, repoUrl ->
+            maven {
+                name = repoName
+                url = uri(repoUrl)
+                credentials {
+                    username = project.user_git_name
+                    password = project.user_github_token ?: project.repository_token ?: project.organization_token
+                }
             }
         }
-        maven {
-            url = uri('https://maven.pkg.github.com/MCEngine/artificialintelligence-api')
-            credentials {
-                username = project.user_git_name
-                password = project.user_github_token ?: project.repository_token ?: project.organization_token
-            }
-        }
-        maven {
-            url = uri('https://maven.pkg.github.com/MCEngine/artificialintelligence-common')
-            credentials {
-                username = project.user_git_name
-                password = project.user_github_token ?: project.repository_token ?: project.organization_token
-            }
-        }
+
+        configureGitHubRepo('MCEngine Core API', 'https://maven.pkg.github.com/MCEngine/core-api')
+        configureGitHubRepo('MCEngine ArtificialIntelligence API', 'https://maven.pkg.github.com/MCEngine/artificialintelligence-api')
+        configureGitHubRepo('MCEngine ArtificialIntelligence Common', 'https://maven.pkg.github.com/MCEngine/artificialintelligence-common')
     }
 }
 
@@ -90,7 +83,7 @@ subprojects {
     }
 
     versionPropertyKey += '.version'
-    version = project.properties[versionPropertyKey] ?: 'undefined'
+    version = project.properties[versionPropertyKey]
 
     tasks.named('jar').configure {
         enabled = false
