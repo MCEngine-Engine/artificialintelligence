@@ -7,7 +7,7 @@ dependencies {
 
     implementation 'io.github.mcengine:core-api:1.0.5-RELEASE'
     implementation 'io.github.mcengine:artificialintelligence-api:1.0.4-RELEASE'
-    implementation 'io.github.mcengine:artificialintelligence-common:1.0.2-RELEASE'
+    implementation 'io.github.mcengine:artificialintelligence-common:1.0.3-RELEASE'
 }
 
 processResources {
