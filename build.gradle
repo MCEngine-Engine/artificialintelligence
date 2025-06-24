@@ -83,7 +83,7 @@ subprojects {
     }
 
     versionPropertyKey += '.version'
-    version = project.properties[versionPropertyKey] ?: 'undefined'
+    version = project.properties[versionPropertyKey]
 
     tasks.named('jar').configure {
         enabled = false
