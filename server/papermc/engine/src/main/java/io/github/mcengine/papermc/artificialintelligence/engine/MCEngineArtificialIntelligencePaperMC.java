@@ -1,10 +1,10 @@
 package io.github.mcengine.papermc.artificialintelligence.engine;
 
-import io.github.mcengine.api.mcengine.MCEngineApi;
+import io.github.mcengine.api.core.MCEngineApi;
 import io.github.mcengine.common.artificialintelligence.MCEngineArtificialIntelligenceCommon;
 import io.github.mcengine.api.artificialintelligence.util.MCEngineArtificialIntelligenceApiUtilToken;
-import io.github.mcengine.api.mcengine.Metrics;
-import io.github.mcengine.api.mcengine.util.MCEngineApiUtilExtension;
+import io.github.mcengine.api.core.Metrics;
+import io.github.mcengine.api.core.util.MCEngineApiUtilExtension;
 import io.github.mcengine.common.artificialintelligence.command.MCEngineArtificialIntelligenceCommonCommand;
 import io.github.mcengine.common.artificialintelligence.tabcompleter.MCEngineArtificialIntelligenceCommonTabCompleter;
 import org.bukkit.Bukkit;
