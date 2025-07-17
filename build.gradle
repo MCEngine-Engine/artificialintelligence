@@ -3,7 +3,7 @@ plugins {
     id 'java'
 }
 
-// Set project version using a property, defaulting to 'unspecified' if not found
+// Set project version using a property
 version = project.properties[project.name + '.version']
 group = 'io.github.mcengine'
 
