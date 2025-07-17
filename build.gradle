@@ -73,17 +73,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'com.github.johnrengelman.shadow'
 
-    def versionPropertyKey = project.path.replace(':', '-')
-    if (versionPropertyKey.startsWith('-')) {
-        versionPropertyKey = versionPropertyKey.substring(1)
-    }
-
-    if (!versionPropertyKey.contains('-')) {
-        versionPropertyKey = project.name
-    }
-
-    versionPropertyKey += '.version'
-    version = project.properties[versionPropertyKey]
+    version = project.findProperty('mcengine-artificialintelligence.version')
 
     tasks.named('jar').configure {
         enabled = false
