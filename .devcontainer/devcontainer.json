@@ -8,8 +8,7 @@
       "version": "none",
       "installMaven": "false",
       "installGradle": "true"
-    },
-    "ghcr.io/devcontainers-contrib/features/ant-sdkman:2": {}
+    }
   },
   "customizations": {
     "vscode": {
@@ -18,7 +17,7 @@
       },
       "extensions": [
         "ms-azuretools.vscode-docker",
-        "MCEngine.mcengine-vscode-extension-pack"
+        "MCEngine.github-pack"
       ]
     }
   }
