@@ -13,6 +13,7 @@ jobs:
     secrets:
       USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
   version-update-for-dev:
+    needs: version-update
     uses: MCEngine/actions/.github/workflows/bump-project-version-for-dev.yml@master
     with:
       repo-name: ${{ github.repository }}
