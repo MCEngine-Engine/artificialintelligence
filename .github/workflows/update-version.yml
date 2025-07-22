@@ -1,8 +1,8 @@
-name: Morning Version Update (Thailand Time)
+name: Nightly Version Update (Thailand Time)
 
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 Nightly * * *'
   workflow_dispatch:
 
 jobs:
