@@ -1,8 +1,8 @@
-name: Nightly Version Update (Thailand Time)
+name: Morning Version and Dependencies Auto-Update (Thailand Time)
 
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 24 * * *'
   workflow_dispatch:
 
 jobs:
@@ -12,16 +12,16 @@ jobs:
       repo-name: ${{ github.repository }}
     secrets:
       USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
-  version-update-for-dev:
+  deps-update-for-mcengine:
     needs: version-update
-    uses: MCEngine/actions/.github/workflows/bump-project-version-for-dev.yml@master
+    uses: MCEngine/actions/.github/workflows/bump-mcengine-deps-version.yml@master
     with:
       repo-name: ${{ github.repository }}
     secrets:
       USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
-  deps-update-for-mcengine:
-    needs: version-update-for-dev
-    uses: MCEngine/actions/.github/workflows/bump-mcengine-deps-version.yml@master
+  version-update-for-dev:
+    needs: deps-update-for-mcengine
+    uses: MCEngine/actions/.github/workflows/bump-project-version-for-dev.yml@master
     with:
       repo-name: ${{ github.repository }}
     secrets:
