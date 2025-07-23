@@ -2,7 +2,7 @@ name: Nightly Version Update (Thailand Time)
 
 on:
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '0 23 * * *'
   workflow_dispatch:
 
 jobs:
