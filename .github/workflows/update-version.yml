@@ -19,3 +19,10 @@ jobs:
       repo-name: ${{ github.repository }}
     secrets:
       USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
+  deps-update-for-mcengine:
+    needs: version-update-for-dev
+    uses: MCEngine/actions/.github/workflows/bump-mcengine-deps-version.yml@master
+    with:
+      repo-name: ${{ github.repository }}
+    secrets:
+      USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
