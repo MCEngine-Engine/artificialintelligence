@@ -42,25 +42,25 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
         // Load extensions
         MCEngineApi.loadExtensions(
             this,
-            "io.github.mcengine.api.artificialintelligence.extension.library.IMCEngineArtificialintelligenceLibrary",
+            "io.github.mcengine.api.artificialintelligence.extension.library.IMCEngineArtificialIntelligenceLibrary",
             "libraries",
             "Library"
             );
         MCEngineApi.loadExtensions(
             this,
-            "io.github.mcengine.api.artificialintelligence.extension.api.IMCEngineArtificialintelligenceAPI",
+            "io.github.mcengine.api.artificialintelligence.extension.api.IMCEngineArtificialIntelligenceAPI",
             "apis",
             "API"
             );
         MCEngineApi.loadExtensions(
             this,
-            "io.github.mcengine.api.artificialintelligence.extension.addon.IMCEngineArtificialintelligenceAddOn",
+            "io.github.mcengine.api.artificialintelligence.extension.addon.IMCEngineArtificialIntelligenceAddOn",
             "addons",
             "AddOn"
             );
         MCEngineApi.loadExtensions(
             this,
-            "io.github.mcengine.api.artificialintelligence.extension.dlc.IMCEngineArtificialintelligenceDLC",
+            "io.github.mcengine.api.artificialintelligence.extension.dlc.IMCEngineArtificialIntelligenceDLC",
             "dlcs",
             "DLC"
             );
