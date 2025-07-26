@@ -65,7 +65,7 @@ allprojects {
 
         configureGitHubRepo('MCEngine Core API', 'https://maven.pkg.github.com/MCEngine-API/core')
         configureGitHubRepo('MCEngine ArtificialIntelligence API', 'https://maven.pkg.github.com/MCEngine-API/artificialintelligence')
-        configureGitHubRepo('MCEngine ArtificialIntelligence Common', 'https://maven.pkg.github.com/MCEngine-API/artificialintelligence')
+        configureGitHubRepo('MCEngine ArtificialIntelligence Common', 'https://maven.pkg.github.com/MCEngine-Common/artificialintelligence')
     }
 }
 
