@@ -1,10 +1,9 @@
 package io.github.mcengine.papermc.artificialintelligence.engine;
 
-import io.github.mcengine.api.core.MCEngineApi;
+import io.github.mcengine.api.core.MCEngineCoreApi;
 import io.github.mcengine.common.artificialintelligence.MCEngineArtificialIntelligenceCommon;
 import io.github.mcengine.api.artificialintelligence.util.MCEngineArtificialIntelligenceApiUtilToken;
 import io.github.mcengine.api.core.Metrics;
-import io.github.mcengine.api.core.util.MCEngineApiUtilExtension;
 import io.github.mcengine.common.artificialintelligence.command.MCEngineArtificialIntelligenceCommonCommand;
 import io.github.mcengine.common.artificialintelligence.tabcompleter.MCEngineArtificialIntelligenceCommonTabCompleter;
 import org.bukkit.Bukkit;
@@ -40,25 +39,25 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
         getCommand("ai").setTabCompleter(new MCEngineArtificialIntelligenceCommonTabCompleter(this));
 
         // Load extensions
-        MCEngineApi.loadExtensions(
+        MCEngineCoreApi.loadExtensions(
             this,
             "io.github.mcengine.api.artificialintelligence.extension.library.IMCEngineArtificialIntelligenceLibrary",
             "libraries",
             "Library"
             );
-        MCEngineApi.loadExtensions(
+        MCEngineCoreApi.loadExtensions(
             this,
             "io.github.mcengine.api.artificialintelligence.extension.api.IMCEngineArtificialIntelligenceAPI",
             "apis",
             "API"
             );
-        MCEngineApi.loadExtensions(
+        MCEngineCoreApi.loadExtensions(
             this,
             "io.github.mcengine.api.artificialintelligence.extension.addon.IMCEngineArtificialIntelligenceAddOn",
             "addons",
             "AddOn"
             );
-        MCEngineApi.loadExtensions(
+        MCEngineCoreApi.loadExtensions(
             this,
             "io.github.mcengine.api.artificialintelligence.extension.dlc.IMCEngineArtificialIntelligenceDLC",
             "dlcs",
@@ -96,7 +95,7 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
             }
         }
 
-        MCEngineApi.checkUpdate(this, getLogger(), "github", "MCEngine", "artificialintelligence-engine", getConfig().getString("github.token", "null"));
+        MCEngineCoreApi.checkUpdate(this, getLogger(), "github", "MCEngine", "artificialintelligence-engine", getConfig().getString("github.token", "null"));
     }
 
     /**
