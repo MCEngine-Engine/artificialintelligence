@@ -95,7 +95,7 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
             }
         }
 
-        MCEngineCoreApi.checkUpdate(this, getLogger(), "github", "MCEngine", "artificialintelligence-engine", getConfig().getString("github.token", "null"));
+        MCEngineCoreApi.checkUpdate(this, getLogger(), "github", "MCEngine-Engine", "artificialintelligence", getConfig().getString("github.token", "null"));
     }
 
     /**
