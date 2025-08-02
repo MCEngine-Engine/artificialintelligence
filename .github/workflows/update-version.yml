@@ -1,10 +1,8 @@
 name: Morning Version and Dependencies Auto-Update (Thailand Time)
-
-on:
+'on':
   schedule:
-    - cron: '0 23 * * *'
-  workflow_dispatch:
-
+  - cron: 0 23 * * *
+  workflow_dispatch: null
 jobs:
   version-update:
     uses: MCEngine-Action/gradle/.github/workflows/bump-project-version.yml@master
