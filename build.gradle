@@ -15,11 +15,11 @@ ext {
     user_github_token = System.getenv('USER_GITHUB_TOKEN')
 
     // Organization
-    organization_name = System.getenv('ORGANIZATION_NAME') ?: 'MCEngine'
+    organization_name = System.getenv('ORGANIZATION_NAME') ?: 'MCEngine-Engine'
     organization_token = System.getenv('ORGANIZATION_TOKEN')
 
     // Repository
-    repository_name = System.getenv('REPOSITORY_NAME') ?: 'artificialintelligence-engine'
+    repository_name = System.getenv('REPOSITORY_NAME') ?: 'artificialintelligence'
     repository_token = System.getenv('REPOSITORY_TOKEN')
 
     /* Project Information */
@@ -118,3 +118,4 @@ tasks.named('jar').configure {
 }
 
 build.dependsOn(shadowJar)
+
