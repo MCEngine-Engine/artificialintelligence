@@ -1,8 +1,10 @@
 name: Morning Version and Dependencies Auto-Update (Thailand Time)
-'on':
+
+on:
   schedule:
-  - cron: 0 23 * * *
-  workflow_dispatch: null
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+
 jobs:
   version-update:
     uses: MCEngine-Action/gradle/.github/workflows/bump-project-version.yml@master
@@ -10,6 +12,7 @@ jobs:
       repo-name: ${{ github.repository }}
     secrets:
       USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
+
   deps-update-for-mcengine:
     needs: version-update
     uses: MCEngine-Action/gradle/.github/workflows/bump-mcengine-deps-version.yml@master
@@ -17,6 +20,7 @@ jobs:
       repo-name: ${{ github.repository }}
     secrets:
       USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
+
   create-release:
     needs: deps-update-for-mcengine
     uses: MCEngine-Action/gradle/.github/workflows/create-release-with-jar.yml@master
@@ -24,6 +28,7 @@ jobs:
       repo-name: ${{ github.repository }}
     secrets:
       USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
+
   version-update-for-dev:
     needs: create-release
     uses: MCEngine-Action/gradle/.github/workflows/bump-project-version-for-dev.yml@master
