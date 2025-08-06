@@ -1,16 +1,16 @@
 package io.github.mcengine.papermc.artificialintelligence.engine;
 
 import io.github.mcengine.api.core.MCEngineCoreApi;
-import io.github.mcengine.common.artificialintelligence.MCEngineArtificialIntelligenceCommon;
 import io.github.mcengine.api.artificialintelligence.util.MCEngineArtificialIntelligenceApiUtilToken;
 import io.github.mcengine.api.core.Metrics;
+import io.github.mcengine.common.artificialintelligence.MCEngineArtificialIntelligenceCommon;
 import io.github.mcengine.common.artificialintelligence.command.MCEngineArtificialIntelligenceCommonCommand;
 import io.github.mcengine.common.artificialintelligence.tabcompleter.MCEngineArtificialIntelligenceCommonTabCompleter;
-import org.bukkit.Bukkit;
+
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Date;
 
 /**
  * Main PaperMC plugin class for MCEngineArtificialIntelligence.
@@ -32,11 +32,20 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
             return;
         }
 
+        // Initialize token manager and core AI API
         MCEngineArtificialIntelligenceApiUtilToken.initialize(this);
         MCEngineArtificialIntelligenceCommon api = new MCEngineArtificialIntelligenceCommon(this);
 
-        getCommand("ai").setExecutor(new MCEngineArtificialIntelligenceCommonCommand(api, api.getDB()));
-        getCommand("ai").setTabCompleter(new MCEngineArtificialIntelligenceCommonTabCompleter(this));
+        // Register dispatcher for "/ai" command
+        String namespace = "ai";
+        api.registerNamespace(namespace);
+        api.registerSubCommand(namespace, "default", new MCEngineArtificialIntelligenceCommonCommand(api, api.getDB()));
+        api.registerSubTabCompleter(namespace, "default", new MCEngineArtificialIntelligenceCommonTabCompleter(this));
+
+        // Get dispatcher and assign to command
+        CommandExecutor dispatcher = api.getDispatcher(namespace);
+        getCommand("ai").setExecutor(dispatcher);
+        getCommand("ai").setTabCompleter((TabCompleter) dispatcher); // Safe cast: dispatcher implements both
 
         // Load extensions
         MCEngineCoreApi.loadExtensions(
@@ -44,25 +53,25 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
             "io.github.mcengine.api.artificialintelligence.extension.library.IMCEngineArtificialIntelligenceLibrary",
             "libraries",
             "Library"
-            );
+        );
         MCEngineCoreApi.loadExtensions(
             this,
             "io.github.mcengine.api.artificialintelligence.extension.api.IMCEngineArtificialIntelligenceAPI",
             "apis",
             "API"
-            );
+        );
         MCEngineCoreApi.loadExtensions(
             this,
             "io.github.mcengine.api.artificialintelligence.extension.addon.IMCEngineArtificialIntelligenceAddOn",
             "addons",
             "AddOn"
-            );
+        );
         MCEngineCoreApi.loadExtensions(
             this,
             "io.github.mcengine.api.artificialintelligence.extension.dlc.IMCEngineArtificialIntelligenceDLC",
             "dlcs",
             "DLC"
-            );
+        );
 
         // Load built-in models
         String[] platforms = { "deepseek", "openai", "openrouter" };
@@ -95,12 +104,22 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
             }
         }
 
-        MCEngineCoreApi.checkUpdate(this, getLogger(), "github", "MCEngine-Engine", "artificialintelligence", getConfig().getString("github.token", "null"));
+        // Check for plugin updates
+        MCEngineCoreApi.checkUpdate(
+            this,
+            getLogger(),
+            "github",
+            "MCEngine-Engine",
+            "artificialintelligence",
+            getConfig().getString("github.token", "null")
+        );
     }
 
     /**
      * Called when the plugin is disabled.
      */
     @Override
-    public void onDisable() {}
+    public void onDisable() {
+        // Plugin shutdown logic (if any) can go here
+    }
 }
