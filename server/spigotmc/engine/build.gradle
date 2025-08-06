@@ -7,7 +7,7 @@ dependencies {
 
     implementation 'io.github.mcengine:core-api:2025.0.8-6-1-dispatcher'
     implementation 'io.github.mcengine:artificialintelligence-api:2025.0.8-6'
-    implementation 'io.github.mcengine:artificialintelligence-common:2025.0.8-6-1-dispatcher'
+    implementation 'io.github.mcengine:artificialintelligence-common:2025.0.8-6-2-dispatcher'
 }
 
 processResources {
