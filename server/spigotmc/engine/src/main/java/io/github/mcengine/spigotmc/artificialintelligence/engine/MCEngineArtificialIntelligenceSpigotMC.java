@@ -6,6 +6,8 @@ import io.github.mcengine.api.artificialintelligence.util.MCEngineArtificialInte
 import io.github.mcengine.api.core.Metrics;
 import io.github.mcengine.common.artificialintelligence.command.MCEngineArtificialIntelligenceCommonCommand;
 import io.github.mcengine.common.artificialintelligence.tabcompleter.MCEngineArtificialIntelligenceCommonTabCompleter;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,17 +31,20 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
             return;
         }
 
-        // Initialize token manager and core API
+        // Initialize token manager and core AI API
         MCEngineArtificialIntelligenceApiUtilToken.initialize(this);
         MCEngineArtificialIntelligenceCommon api = new MCEngineArtificialIntelligenceCommon(this);
 
-        // Register namespace and command
+        // Register dispatcher for "/ai" command
         String namespace = "ai";
         api.registerNamespace(namespace);
         api.registerSubCommand(namespace, "default", new MCEngineArtificialIntelligenceCommonCommand(api, api.getDB()));
         api.registerSubTabCompleter(namespace, "default", new MCEngineArtificialIntelligenceCommonTabCompleter(this));
-        getCommand("ai").setExecutor(api.getDispatcher(namespace));
-        getCommand("ai").setTabCompleter(api.getDispatcher(namespace));
+
+        // Get dispatcher and assign to command
+        CommandExecutor dispatcher = api.getDispatcher(namespace);
+        getCommand("ai").setExecutor(dispatcher);
+        getCommand("ai").setTabCompleter((TabCompleter) dispatcher); // Safe cast: dispatcher implements both interfaces
 
         // Load extensions
         MCEngineCoreApi.loadExtensions(
@@ -67,7 +72,7 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
             "DLC"
         );
 
-        // Load built-in models from config
+        // Load built-in models
         String[] platforms = { "deepseek", "openai", "openrouter" };
         for (String platform : platforms) {
             String modelsKey = "ai." + platform + ".models";
@@ -98,13 +103,22 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
             }
         }
 
-        // Check for updates
-        MCEngineCoreApi.checkUpdate(this, getLogger(), "github", "MCEngine-Engine", "artificialintelligence", getConfig().getString("github.token", "null"));
+        // Check for plugin updates
+        MCEngineCoreApi.checkUpdate(
+            this,
+            getLogger(),
+            "github",
+            "MCEngine-Engine",
+            "artificialintelligence",
+            getConfig().getString("github.token", "null")
+        );
     }
 
     /**
      * Called when the plugin is disabled.
      */
     @Override
-    public void onDisable() {}
+    public void onDisable() {
+        // Plugin shutdown logic here if needed
+    }
 }
