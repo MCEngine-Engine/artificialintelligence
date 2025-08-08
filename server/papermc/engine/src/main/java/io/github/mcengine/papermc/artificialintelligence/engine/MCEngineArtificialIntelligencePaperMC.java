@@ -62,6 +62,12 @@ public class MCEngineArtificialIntelligencePaperMC extends JavaPlugin {
         );
         MCEngineCoreApi.loadExtensions(
             this,
+            "io.github.mcengine.api.artificialintelligence.extension.agent.IMCEngineArtificialIntelligenceAgent",
+            "agents",
+            "Agent"
+        );
+        MCEngineCoreApi.loadExtensions(
+            this,
             "io.github.mcengine.api.artificialintelligence.extension.addon.IMCEngineArtificialIntelligenceAddOn",
             "addons",
             "AddOn"
