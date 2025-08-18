@@ -1,3 +1,3 @@
-# ℹ️ Information
+# Information 📖
 
-Read on [`website`](https://mcengine-website.github.io/artificialintelligence/engine/)!!!
+Info on [`website`](https://mcengine-website.github.io/artificialintelligence/engine/)
