@@ -1,4 +1,5 @@
 enable: false
+license: free
 
 # Database support
 # - sqlite
