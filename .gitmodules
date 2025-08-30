@@ -1,8 +1,0 @@
-[submodule "api"]
-	path = api
-	url = https://github.com/MCEngine-API/artificialintelligence
-	branch = master
-[submodule "common"]
-	path = common
-	url = https://github.com/MCEngine-Common/artificialintelligence
-	branch = master
