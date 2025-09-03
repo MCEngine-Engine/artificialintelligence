@@ -5,12 +5,12 @@ plugins {
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT'
 
-    implementation 'io.github.mcengine:core-api:2025.0.9-3'
+    implementation 'io.github.mcengine:core-api:2025.0.9-4'
 
-    implementation 'io.github.mcengine:artificialintelligence-api:2025.0.9-3'
-    implementation 'io.github.mcengine:hologram-api:2025.0.9-3'
+    implementation 'io.github.mcengine:artificialintelligence-api:2025.0.9-4'
+    implementation 'io.github.mcengine:hologram-api:2025.0.9-4'
 
-    implementation 'io.github.mcengine:artificialintelligence-common:2025.0.9-3'
+    implementation 'io.github.mcengine:artificialintelligence-common:2025.0.9-4'
 }
 
 processResources {
