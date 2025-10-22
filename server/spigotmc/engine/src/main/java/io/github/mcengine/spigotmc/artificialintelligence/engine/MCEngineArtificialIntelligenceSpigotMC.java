@@ -31,6 +31,15 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
             return;
         }
 
+        String license = getConfig().getString("licenses.license", "free"); 
+        if (!license.equalsIgnoreCase("free")) { 
+            getLogger().warning("Plugin is disabled in config.yml.");
+            getLogger().warning("Invalid license.");
+            getLogger().warning("Check license or use \"free\".");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         // Initialize token manager and core AI API
         MCEngineArtificialIntelligenceApiUtilToken.initialize(this);
         MCEngineArtificialIntelligenceCommon api = new MCEngineArtificialIntelligenceCommon(this);
