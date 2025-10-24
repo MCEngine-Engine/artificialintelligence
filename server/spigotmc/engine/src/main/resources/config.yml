@@ -3,6 +3,20 @@ licenses:
   license: free
   secret_key:
 
+project:
+  platform: GitHub
+  token:
+  org:
+    name: MCEngine-Engine
+    url: https://github.com/MCEngine-Engine
+  repo:
+    name: artificialintelligence
+    url: https://github.com/MCEngine-Engine/artificialintelligence
+    issue:
+      url: https://github.com/MCEngine-Engine/artificialintelligence/issues
+  website:
+    url: https://mcengine-website.github.io/artificialintelligence
+
 # Database support
 # - sqlite
 # - mysql

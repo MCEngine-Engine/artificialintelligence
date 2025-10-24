@@ -127,6 +127,15 @@ public class MCEngineArtificialIntelligenceSpigotMC extends JavaPlugin {
             "artificialintelligence",
             getConfig().getString("github.token", "null")
         );
+
+        // Log project information
+        getLogger().info("Project Platform: " + getConfig().getString("project.platform", "github"));
+        getLogger().info("Project Organization Name: " + getConfig().getString("project.org.name", "MCEngine-Engine"));
+        getLogger().info("Project Organization URL: " + getConfig().getString("project.org.url", "https://github.com/MCEngine-Engine"));
+        getLogger().info("Project Repository Name: " + getConfig().getString("project.repo.name", "artificialintelligence"));
+        getLogger().info("Project Repository URL: " + getConfig().getString("project.repo.url", "https://github.com/MCEngine-Engine/artificialintelligence"));
+        getLogger().info("Project Repository Issues URL: " + getConfig().getString("project.repo.issue.url", "https://github.com/MCEngine-Engine/artificialintelligence/issues"));
+        getLogger().info("Project Website URL: " + getConfig().getString("project.website.url", "https://mcengine-website.github.io/artificialintelligence"));
     }
 
     /**
